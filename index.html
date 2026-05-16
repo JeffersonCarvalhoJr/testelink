@@ -1405,6 +1405,43 @@
         .footer-links a:hover {
             color: var(--teal-light);
         }
+        /* ── LANGUAGE TOGGLE ── */
+        
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: rgba(29, 63, 75, 0.06);
+            border-radius: 20px;
+            padding: 3px;
+            border: 1px solid rgba(29, 63, 75, 0.12);
+            flex-shrink: 0;
+        }
+        
+        .lang-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 11px;
+            border-radius: 16px;
+            transition: background 0.2s, color 0.2s;
+            line-height: 1;
+        }
+        
+        .lang-btn.active {
+            background: var(--navy);
+            color: #fff;
+        }
+        
+        .lang-btn:not(.active):hover {
+            color: var(--navy);
+        }
+
         /* ── SCROLL TO TOP ── */
         
         .scroll-top {
@@ -1651,12 +1688,16 @@
             <img src="images/Logo LinkBrasil (1).PNG" alt="Link Brasil">
         </a>
         <ul class="nav-links">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#pilares">Pilares</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#estoque">Estoque</a></li>
-            <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+            <li><a href="#sobre" data-i18n="nav_about">Sobre</a></li>
+            <li><a href="#pilares" data-i18n="nav_pillars">Pilares</a></li>
+            <li><a href="#servicos" data-i18n="nav_services">Serviços</a></li>
+            <li><a href="#estoque" data-i18n="nav_stock">Estoque</a></li>
+            <li><a href="#contato" class="nav-cta" data-i18n="nav_cta">Fale Conosco</a></li>
         </ul>
+        <div class="lang-toggle" aria-label="Idioma / Language">
+            <button class="lang-btn active" id="btnPT" onclick="setLang('pt')">PT</button>
+            <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+        </div>
         <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span>
     <span></span>
@@ -1667,13 +1708,13 @@
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menu mobile">
         <ul>
-            <li><a href="#sobre" class="mobile-link">Sobre</a></li>
-            <li><a href="#pilares" class="mobile-link">Pilares</a></li>
-            <li><a href="#servicos" class="mobile-link">Serviços</a></li>
-            <li><a href="#estoque" class="mobile-link">Estoque</a></li>
-            <li><a href="#contato" class="mobile-link">Fale Conosco</a></li>
+            <li><a href="#sobre" class="mobile-link" data-i18n="nav_about">Sobre</a></li>
+            <li><a href="#pilares" class="mobile-link" data-i18n="nav_pillars">Pilares</a></li>
+            <li><a href="#servicos" class="mobile-link" data-i18n="nav_services">Serviços</a></li>
+            <li><a href="#estoque" class="mobile-link" data-i18n="nav_stock">Estoque</a></li>
+            <li><a href="#contato" class="mobile-link" data-i18n="nav_cta">Fale Conosco</a></li>
         </ul>
-        <div class="mobile-menu-footer">Link Brasil - Conectando mercados, movendo indústrias! 🌎</div>
+        <div class="mobile-menu-footer" data-i18n="tagline">Link Brasil - Conectando mercados, movendo indústrias! 🌎</div>
     </div>
 
     <!-- HERO -->
@@ -1683,23 +1724,23 @@
                 <img src="images/Logo LinkBrasil (1).PNG" alt="Link Brasil Logo">
                 <div class="hero-divider"></div>
                 <div class="hero-tagline">
-                    <p>Brasil &amp; China</p>
-                    <span>Conectando mercados, movendo indústrias! 🌎</span>
+                    <p data-i18n="hero_br_cn">Brasil &amp; China</p>
+                    <span data-i18n="tagline">Conectando mercados, movendo indústrias! 🌎</span>
                 </div>
             </div>
         </div>
 
         <div class="hero-right">
-            <div class="hero-eyebrow">Ponte Estratégica</div>
-            <h1 class="hero-title">
+            <div class="hero-eyebrow" data-i18n="hero_eyebrow">Ponte Estratégica</div>
+            <h1 class="hero-title" data-i18n="hero_title">
                 Sua conexão direta com<br>o <em>mercado chinês</em>
             </h1>
-            <p class="hero-desc">Conectamos empresas brasileiras aos melhores fabricantes da China, com qualidade certificada, segurança e inteligência de negócios em cada etapa.</p>
+            <p class="hero-desc" data-i18n="hero_desc">Conectamos empresas brasileiras aos melhores fabricantes da China, com qualidade certificada, segurança e inteligência de negócios em cada etapa.</p>
             <div class="hero-actions">
                 <a href="#contato" class="btn-primary">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>                    Fale Conosco
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>                    <span data-i18n="nav_cta">Fale Conosco</span>
                 </a>
-                <a href="#servicos" class="btn-outline">Nossos Serviços</a>
+                <a href="#servicos" class="btn-outline" data-i18n="hero_services_btn">Nossos Serviços</a>
             </div>
         </div>
     </section>
@@ -1708,15 +1749,15 @@
     <div class="stats-bar">
         <div class="stat-item">
             <div class="stat-num">100%</div>
-            <div class="stat-label">Produtos Certificados</div>
+            <div class="stat-label" data-i18n="stat1">Produtos Certificados</div>
         </div>
         <div class="stat-item">
             <div class="stat-num">360°</div>
-            <div class="stat-label">Suporte na Importação</div>
+            <div class="stat-label" data-i18n="stat2">Suporte na Importação</div>
         </div>
         <div class="stat-item">
             <div class="stat-num">BR↔CN</div>
-            <div class="stat-label">Parceria Estratégica</div>
+            <div class="stat-label" data-i18n="stat3">Parceria Estratégica</div>
         </div>
     </div>
 
@@ -1726,32 +1767,32 @@
             <div class="about-card">
                 <img src="images/Logo LinkBrasil (1).PNG" alt="Link Brasil">
                 <div class="about-card-text">
-                    <span>Ponte estratégica global</span>
+            <span data-i18n="about_badge_text">Ponte estratégica global</span>
                     <strong>BR ↔ CN</strong>
                 </div>
             </div>
             <div class="about-badge">
                 <strong>B2B</strong>
-                <span>Parceria comercial</span>
+                <span data-i18n="about_badge_b2b">Parceria comercial</span>
             </div>
         </div>
 
         <div class="reveal" style="transition-delay:0.15s">
-            <div class="section-eyebrow">Conectando Oportunidades</div>
-            <h2 class="section-title">Mais do que uma importadora</h2>
-            <p class="section-desc">A Link Brasil atua no coração do comércio internacional, criando pontes reais entre o Brasil e a China. Somos parceiros estratégicos que entendem profundamente os dois mercados e traduzem isso em resultados concretos para o seu negócio.</p>
+            <div class="section-eyebrow" data-i18n="about_eyebrow">Conectando Oportunidades</div>
+            <h2 class="section-title" data-i18n="about_title">Mais do que uma importadora</h2>
+            <p class="section-desc" data-i18n="about_desc">A Link Brasil atua no coração do comércio internacional, criando pontes reais entre o Brasil e a China. Somos parceiros estratégicos que entendem profundamente os dois mercados e traduzem isso em resultados concretos para o seu negócio.</p>
             <div class="check-list">
                 <div class="check-item">
                     <div class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p><strong>Profundo conhecimento</strong> dos mercados brasileiro e chinês</p>
+                    <p data-i18n="about_check1"><strong>Profundo conhecimento</strong> dos mercados brasileiro e chinês</p>
                 </div>
                 <div class="check-item">
                     <div class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p><strong>Certificações internacionais</strong> e rastreabilidade total</p>
+                    <p data-i18n="about_check2"><strong>Certificações internacionais</strong> e rastreabilidade total</p>
                 </div>
                 <div class="check-item">
                     <div class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <p><strong>Suporte completo</strong> em cada etapa da jornada</p>
+                    <p data-i18n="about_check3"><strong>Suporte completo</strong> em cada etapa da jornada</p>
                 </div>
             </div>
         </div>
@@ -1760,30 +1801,30 @@
     <!-- PILARES -->
     <section class="pillars" id="pilares">
         <div class="pillars-header reveal">
-            <div class="section-eyebrow">Nossos Pilares</div>
-            <h2 class="section-title">Qualidade que Transforma</h2>
-            <p class="section-desc">Cada detalhe do nosso processo é pensado para garantir o melhor resultado para o seu negócio.</p>
+            <div class="section-eyebrow" data-i18n="pillars_eyebrow">Nossos Pilares</div>
+            <h2 class="section-title" data-i18n="pillars_title">Qualidade que Transforma</h2>
+            <p class="section-desc" data-i18n="pillars_desc">Cada detalhe do nosso processo é pensado para garantir o melhor resultado para o seu negócio.</p>
         </div>
         <div class="pillars-grid">
             <div class="pillar-card reveal">
                 <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                <div class="pillar-title">Produtos de Alta Qualidade</div>
-                <p class="pillar-desc">Selecionamos rigorosamente cada fornecedor, garantindo excelência, durabilidade e conformidade com os padrões exigidos pelo mercado brasileiro.</p>
+                <div class="pillar-title" data-i18n="pillar1_title">Produtos de Alta Qualidade</div>
+                <p class="pillar-desc" data-i18n="pillar1_desc">Selecionamos rigorosamente cada fornecedor, garantindo excelência, durabilidade e conformidade com os padrões exigidos pelo mercado brasileiro.</p>
             </div>
             <div class="pillar-card reveal" style="transition-delay:0.1s">
                 <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-                <div class="pillar-title">Parcerias Estratégicas na China</div>
-                <p class="pillar-desc">Conexões sólidas com fabricantes renomados e confiáveis, construídas ao longo de anos de experiência no mercado chinês.</p>
+                <div class="pillar-title" data-i18n="pillar2_title">Parcerias Estratégicas na China</div>
+                <p class="pillar-desc" data-i18n="pillar2_desc">Conexões sólidas com fabricantes renomados e confiáveis, construídas ao longo de anos de experiência no mercado chinês.</p>
             </div>
             <div class="pillar-card reveal" style="transition-delay:0.2s">
                 <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-                <div class="pillar-title">Logística Completa</div>
-                <p class="pillar-desc">Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total em cada etapa da cadeia.</p>
+                <div class="pillar-title" data-i18n="pillar3_title">Logística Completa</div>
+                <p class="pillar-desc" data-i18n="pillar3_desc">Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total em cada etapa da cadeia.</p>
             </div>
             <div class="pillar-card reveal" style="transition-delay:0.3s">
                 <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <div class="pillar-title">Conformidade Internacional</div>
-                <p class="pillar-desc">Nossa expertise jurídica e técnica protege seu investimento, reduzindo riscos ao longo de toda a cadeia de importação.</p>
+                <div class="pillar-title" data-i18n="pillar4_title">Conformidade Internacional</div>
+                <p class="pillar-desc" data-i18n="pillar4_desc">Nossa expertise jurídica e técnica protege seu investimento, reduzindo riscos ao longo de toda a cadeia de importação.</p>
             </div>
         </div>
     </section>
@@ -1791,31 +1832,31 @@
     <!-- ECOSSISTEMA -->
     <section class="ecosystem" id="servicos">
         <div class="eco-header reveal">
-            <div class="section-eyebrow" style="color:var(--teal-light)">Nosso Ecossistema</div>
-            <h2 class="section-title">Da fábrica ao seu negócio</h2>
-            <p class="section-desc">Um processo integrado e sem fricção — do sourcing até a entrega final no Brasil.</p>
+            <div class="section-eyebrow" style="color:var(--teal-light)" data-i18n="eco_eyebrow">Nosso Ecossistema</div>
+            <h2 class="section-title" data-i18n="eco_title">Da fábrica ao seu negócio</h2>
+            <p class="section-desc" data-i18n="eco_desc">Um processo integrado e sem fricção — do sourcing até a entrega final no Brasil.</p>
         </div>
         <div class="eco-flow">
             <div class="eco-step reveal">
                 <div class="eco-icon-ring">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
                 </div>
-                <div class="eco-title">Sourcing Inteligente</div>
-                <p class="eco-desc">Identificamos os melhores fabricantes para suas necessidades específicas no mercado chinês.</p>
+                <div class="eco-title" data-i18n="eco1_title">Sourcing Inteligente</div>
+                <p class="eco-desc" data-i18n="eco1_desc">Identificamos os melhores fabricantes para suas necessidades específicas no mercado chinês.</p>
             </div>
             <div class="eco-step reveal" style="transition-delay:0.15s">
                 <div class="eco-icon-ring">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
                 </div>
-                <div class="eco-title">Gestão Centralizada</div>
-                <p class="eco-desc">Simplificamos a comunicação e negociação com múltiplos fornecedores em um único ponto de contato.</p>
+                <div class="eco-title" data-i18n="eco2_title">Gestão Centralizada</div>
+                <p class="eco-desc" data-i18n="eco2_desc">Simplificamos a comunicação e negociação com múltiplos fornecedores em um único ponto de contato.</p>
             </div>
             <div class="eco-step reveal" style="transition-delay:0.3s">
                 <div class="eco-icon-ring">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 </div>
-                <div class="eco-title">Logística Completa</div>
-                <p class="eco-desc">Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total.</p>
+                <div class="eco-title" data-i18n="eco3_title">Logística Completa</div>
+                <p class="eco-desc" data-i18n="eco3_desc">Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total.</p>
             </div>
         </div>
     </section>
@@ -1837,25 +1878,25 @@
         </div>
 
         <div class="reveal" style="transition-delay:0.15s">
-            <div class="section-eyebrow">Conformidade Internacional</div>
-            <h2 class="section-title">Segurança em cada etapa do processo</h2>
-            <p class="section-desc">Garantimos que todos os produtos importados sigam os mais altos padrões globais.</p>
+            <div class="section-eyebrow" data-i18n="comp_eyebrow">Conformidade Internacional</div>
+            <h2 class="section-title" data-i18n="comp_title">Segurança em cada etapa do processo</h2>
+            <p class="section-desc" data-i18n="comp_desc">Garantimos que todos os produtos importados sigam os mais altos padrões globais.</p>
             <div class="compliance-items">
                 <div class="comp-item">
                     <div class="comp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comp-text">
+                    <div class="comp-text" data-i18n="comp1">
                         <strong>Certificações Internacionais</strong> Produtos conformes com os padrões exigidos pelo mercado brasileiro e regulamentações globais.
                     </div>
                 </div>
                 <div class="comp-item">
                     <div class="comp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comp-text">
+                    <div class="comp-text" data-i18n="comp2">
                         <strong>Expertise Jurídica e Técnica</strong> Proteção completa do seu investimento com gestão de riscos em toda a cadeia de importação.
                     </div>
                 </div>
                 <div class="comp-item">
                     <div class="comp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="comp-text">
+                    <div class="comp-text" data-i18n="comp3">
                         <strong>Rastreabilidade Total</strong> Visibilidade completa de cada etapa do processo, da fábrica até a entrega final.
                     </div>
                 </div>
@@ -1867,21 +1908,21 @@
     <section class="stock" id="estoque">
         <div class="stock-inner">
             <div class="reveal">
-                <div class="section-eyebrow">Pronta Entrega</div>
-                <h2 class="section-title">Estoque à Pronta Entrega</h2>
-                <p class="section-desc">Pensando na agilidade que o mercado exige, a Link Brasil também disponibiliza produtos à pronta entrega no Brasil.</p>
+                <div class="section-eyebrow" data-i18n="stock_eyebrow">Pronta Entrega</div>
+                <h2 class="section-title" data-i18n="stock_title">Estoque à Pronta Entrega</h2>
+                <p class="section-desc" data-i18n="stock_desc">Pensando na agilidade que o mercado exige, a Link Brasil também disponibiliza produtos à pronta entrega no Brasil.</p>
                 <div class="stock-features">
                     <div class="stock-feat">
                         <div class="stock-feat-bar"></div>
-                        <p><strong>Itens já nacionalizados</strong> e disponíveis em estoque no Brasil, reduzindo significativamente o tempo de espera.</p>
+                        <p data-i18n="stock_feat1"><strong>Itens já nacionalizados</strong> e disponíveis em estoque no Brasil, reduzindo significativamente o tempo de espera.</p>
                     </div>
                     <div class="stock-feat">
                         <div class="stock-feat-bar"></div>
-                        <p>Maior eficiência para <strong>reposições, demandas urgentes</strong> e oportunidades imediatas de mercado.</p>
+                        <p data-i18n="stock_feat2">Maior eficiência para <strong>reposições, demandas urgentes</strong> e oportunidades imediatas de mercado.</p>
                     </div>
                     <div class="stock-feat">
                         <div class="stock-feat-bar"></div>
-                        <p>Velocidade sem abrir mão da qualidade — <strong>importação estratégica com agilidade local.</strong></p>
+                        <p data-i18n="stock_feat3">Velocidade sem abrir mão da qualidade — <strong>importação estratégica com agilidade local.</strong></p>
                     </div>
                 </div>
             </div>
@@ -1895,8 +1936,8 @@
           <rect x="46" y="36" width="14" height="18" rx="2" fill="rgba(79,117,141,0.25)" stroke="rgba(109,147,176,0.7)"/>
         </svg>
                 </div>
-                <h3>DISPONÍVEL AGORA</h3>
-                <p>Produtos prontos para envio imediato, sem espera de produção ou embarque internacional.</p>
+                <h3 data-i18n="stock_available">DISPONÍVEL AGORA</h3>
+                <p data-i18n="stock_available_desc">Produtos prontos para envio imediato, sem espera de produção ou embarque internacional.</p>
             </div>
         </div>
     </section>
@@ -1904,9 +1945,9 @@
     <!-- INOVAÇÃO -->
     <section class="innovation">
         <div class="innov-header reveal">
-            <div class="section-eyebrow">Inovação</div>
-            <h2 class="section-title">De olho no mercado!</h2>
-            <p class="section-desc" style="text-align:center; max-width:580px; margin:0 auto">Monitoramos continuamente as demandas do setor para antecipar oportunidades e oferecer produtos com alto potencial de sucesso no Brasil.</p>
+            <div class="section-eyebrow" data-i18n="innov_eyebrow">Inovação</div>
+            <h2 class="section-title" data-i18n="innov_title">De olho no mercado!</h2>
+            <p class="section-desc" style="text-align:center; max-width:580px; margin:0 auto" data-i18n="innov_desc">Monitoramos continuamente as demandas do setor para antecipar oportunidades e oferecer produtos com alto potencial de sucesso no Brasil.</p>
         </div>
         <div class="innov-cards">
             <div class="innov-card reveal">
@@ -1914,8 +1955,8 @@
                     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="32" cy="32" r="20"/><path d="M12 32h40M32 12c-8 8-8 32 0 40M32 12c8 8 8 32 0 40"/></svg>
                 </div>
                 <div class="innov-card-body">
-                    <h4>Monitoramento de Tendências</h4>
-                    <p>Acompanhamento contínuo das demandas globais e oportunidades emergentes no mercado chinês.</p>
+                    <h4 data-i18n="innov1_title">Monitoramento de Tendências</h4>
+                    <p data-i18n="innov1_desc">Acompanhamento contínuo das demandas globais e oportunidades emergentes no mercado chinês.</p>
                 </div>
             </div>
             <div class="innov-card reveal" style="transition-delay:0.1s">
@@ -1923,8 +1964,8 @@
                     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 48L24 32l10 10 10-16 10 14"/><circle cx="54" cy="14" r="6"/></svg>
                 </div>
                 <div class="innov-card-body">
-                    <h4>Inteligência de Negócios</h4>
-                    <p>Análise de dados e insights de mercado para embasar suas decisões de importação com segurança.</p>
+                    <h4 data-i18n="innov2_title">Inteligência de Negócios</h4>
+                    <p data-i18n="innov2_desc">Análise de dados e insights de mercado para embasar suas decisões de importação com segurança.</p>
                 </div>
             </div>
             <div class="innov-card reveal" style="transition-delay:0.2s">
@@ -1932,8 +1973,8 @@
                     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M32 8v12M32 44v12M8 32h12M44 32h12"/><circle cx="32" cy="32" r="10"/></svg>
                 </div>
                 <div class="innov-card-body">
-                    <h4>Produtos de Alto Potencial</h4>
-                    <p>Seleção estratégica de produtos com maior probabilidade de sucesso no mercado brasileiro.</p>
+                    <h4 data-i18n="innov3_title">Produtos de Alto Potencial</h4>
+                    <p data-i18n="innov3_desc">Seleção estratégica de produtos com maior probabilidade de sucesso no mercado brasileiro.</p>
                 </div>
             </div>
         </div>
@@ -1941,15 +1982,15 @@
 
     <!-- CTA / CONTATO -->
     <section class="cta-section" id="contato">
-        <div class="section-eyebrow" style="color:var(--teal-light); justify-content:center">Vamos Importar Juntos?</div>
-        <h2 class="section-title">Seu Sucesso Começa Aqui</h2>
-        <p class="section-desc">A Link Brasil está pronta para ser sua parceira estratégica no comércio com a China — com expertise, qualidade e dedicação do início ao fim.</p>
+        <div class="section-eyebrow" style="color:var(--teal-light); justify-content:center" data-i18n="cta_eyebrow">Vamos Importar Juntos?</div>
+        <h2 class="section-title" data-i18n="cta_title">Seu Sucesso Começa Aqui</h2>
+        <p class="section-desc" data-i18n="cta_desc">A Link Brasil está pronta para ser sua parceira estratégica no comércio com a China — com expertise, qualidade e dedicação do início ao fim.</p>
 
         <div class="cta-contacts">
             <a href="mailto:linkbrasil.ltda@gmail.com" class="cta-contact-card">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <div>
-                    <div class="cta-contact-label">E-mail</div>
+                    <div class="cta-contact-label" data-i18n="contact_email_label">E-mail</div>
                     <div class="cta-contact-value">linkbrasil.ltda@gmail.com</div>
                 </div>
             </a>
@@ -1961,7 +2002,7 @@
     </svg>
 
                 <div>
-                    <div class="cta-contact-label">Whatsapp/Telefone</div>
+                    <div class="cta-contact-label" data-i18n="contact_wa_label">Whatsapp/Telefone</div>
                     <div class="cta-contact-value">+55 (51) 99777-6470</div>
                 </div>
             </a>
@@ -1978,16 +2019,16 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div class="cta-address-text">
                 <strong>Link Brasil Soluções em Componentes Ltda</strong> ROD ERS, 239 - 5966 · ARMZ 6 · Industrial Norte<br> Campo Bom – RS, 93718-240
-                <br><span style="display:inline-block; margin-top:6px; font-size:11px; color:var(--teal-light); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Ver no Google Maps →</span>
+                <br><span style="display:inline-block; margin-top:6px; font-size:11px; color:var(--teal-light); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;" data-i18n="maps_link">Ver no Google Maps →</span>
             </div>
         </a>
 
         <div class="cta-buttons">
             <a href="mailto:linkbrasil.ltda@gmail.com" class="btn-teal">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>                Enviar E-mail
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>                <span data-i18n="btn_email">Enviar E-mail</span>
             </a>
             <a href="https://instagram.com/_linkbrasil" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>                Ver Instagram
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>                <span data-i18n="btn_instagram">Ver Instagram</span>
             </a>
         </div>
     </section>
@@ -1997,11 +2038,11 @@
         <div class="footer-logo">
             <img src="images/Logo LinkBrasil (1).PNG" alt="Link Brasil">
         </div>
-        <div class="footer-copy">Link Brasil Soluções em Componentes LTDA. — CNPJ: 65.176.545/0001-07 — Rodovia ERS-239, 5966, Armz 06 — Industrial Norte, Campo Bom/RS — CEP 93.718-240 ® Link Brasil – Todos os direitos reservados.</div>
+        <div class="footer-copy">Link Brasil Soluções em Componentes LTDA. — CNPJ: 65.176.545/0001-07 — Rodovia ERS-239, 5966, Armz 06 — Industrial Norte, Campo Bom/RS — CEP 93.718-240 ® Link Brasil – <span data-i18n="footer_rights">Todos os direitos reservados.</span></div>
         <div class="footer-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#contato">Contato</a>
+            <a href="#sobre" data-i18n="nav_about">Sobre</a>
+            <a href="#servicos" data-i18n="nav_services">Serviços</a>
+            <a href="#contato" data-i18n="footer_contact">Contato</a>
         </div>
     </footer>
 
@@ -2011,6 +2052,185 @@
     <polyline points="18 15 12 9 6 15"/>
   </svg>
 </button>
+
+    <script>
+        /* ── TRANSLATIONS ── */
+        const translations = {
+            pt: {
+                nav_about: 'Sobre',
+                nav_pillars: 'Pilares',
+                nav_services: 'Serviços',
+                nav_stock: 'Estoque',
+                nav_cta: 'Fale Conosco',
+                tagline: 'Conectando mercados, movendo indústrias! 🌎',
+                hero_br_cn: 'Brasil & China',
+                hero_eyebrow: 'Ponte Estratégica',
+                hero_title: 'Sua conexão direta com<br>o <em>mercado chinês</em>',
+                hero_desc: 'Conectamos empresas brasileiras aos melhores fabricantes da China, com qualidade certificada, segurança e inteligência de negócios em cada etapa.',
+                hero_services_btn: 'Nossos Serviços',
+                stat1: 'Produtos Certificados',
+                stat2: 'Suporte na Importação',
+                stat3: 'Parceria Estratégica',
+                about_badge_text: 'Ponte estratégica global',
+                about_badge_b2b: 'Parceria comercial',
+                about_eyebrow: 'Conectando Oportunidades',
+                about_title: 'Mais do que uma importadora',
+                about_desc: 'A Link Brasil atua no coração do comércio internacional, criando pontes reais entre o Brasil e a China. Somos parceiros estratégicos que entendem profundamente os dois mercados e traduzem isso em resultados concretos para o seu negócio.',
+                about_check1: '<strong>Profundo conhecimento</strong> dos mercados brasileiro e chinês',
+                about_check2: '<strong>Certificações internacionais</strong> e rastreabilidade total',
+                about_check3: '<strong>Suporte completo</strong> em cada etapa da jornada',
+                pillars_eyebrow: 'Nossos Pilares',
+                pillars_title: 'Qualidade que Transforma',
+                pillars_desc: 'Cada detalhe do nosso processo é pensado para garantir o melhor resultado para o seu negócio.',
+                pillar1_title: 'Produtos de Alta Qualidade',
+                pillar1_desc: 'Selecionamos rigorosamente cada fornecedor, garantindo excelência, durabilidade e conformidade com os padrões exigidos pelo mercado brasileiro.',
+                pillar2_title: 'Parcerias Estratégicas na China',
+                pillar2_desc: 'Conexões sólidas com fabricantes renomados e confiáveis, construídas ao longo de anos de experiência no mercado chinês.',
+                pillar3_title: 'Logística Completa',
+                pillar3_desc: 'Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total em cada etapa da cadeia.',
+                pillar4_title: 'Conformidade Internacional',
+                pillar4_desc: 'Nossa expertise jurídica e técnica protege seu investimento, reduzindo riscos ao longo de toda a cadeia de importação.',
+                eco_eyebrow: 'Nosso Ecossistema',
+                eco_title: 'Da fábrica ao seu negócio',
+                eco_desc: 'Um processo integrado e sem fricção — do sourcing até a entrega final no Brasil.',
+                eco1_title: 'Sourcing Inteligente',
+                eco1_desc: 'Identificamos os melhores fabricantes para suas necessidades específicas no mercado chinês.',
+                eco2_title: 'Gestão Centralizada',
+                eco2_desc: 'Simplificamos a comunicação e negociação com múltiplos fornecedores em um único ponto de contato.',
+                eco3_title: 'Logística Completa',
+                eco3_desc: 'Coordenamos embarque, desembaraço aduaneiro e entrega final com rastreabilidade total.',
+                comp_eyebrow: 'Conformidade Internacional',
+                comp_title: 'Segurança em cada etapa do processo',
+                comp_desc: 'Garantimos que todos os produtos importados sigam os mais altos padrões globais.',
+                comp1: '<strong>Certificações Internacionais</strong> Produtos conformes com os padrões exigidos pelo mercado brasileiro e regulamentações globais.',
+                comp2: '<strong>Expertise Jurídica e Técnica</strong> Proteção completa do seu investimento com gestão de riscos em toda a cadeia de importação.',
+                comp3: '<strong>Rastreabilidade Total</strong> Visibilidade completa de cada etapa do processo, da fábrica até a entrega final.',
+                stock_eyebrow: 'Pronta Entrega',
+                stock_title: 'Estoque à Pronta Entrega',
+                stock_desc: 'Pensando na agilidade que o mercado exige, a Link Brasil também disponibiliza produtos à pronta entrega no Brasil.',
+                stock_feat1: '<strong>Itens já nacionalizados</strong> e disponíveis em estoque no Brasil, reduzindo significativamente o tempo de espera.',
+                stock_feat2: 'Maior eficiência para <strong>reposições, demandas urgentes</strong> e oportunidades imediatas de mercado.',
+                stock_feat3: 'Velocidade sem abrir mão da qualidade — <strong>importação estratégica com agilidade local.</strong>',
+                stock_available: 'DISPONÍVEL AGORA',
+                stock_available_desc: 'Produtos prontos para envio imediato, sem espera de produção ou embarque internacional.',
+                innov_eyebrow: 'Inovação',
+                innov_title: 'De olho no mercado!',
+                innov_desc: 'Monitoramos continuamente as demandas do setor para antecipar oportunidades e oferecer produtos com alto potencial de sucesso no Brasil.',
+                innov1_title: 'Monitoramento de Tendências',
+                innov1_desc: 'Acompanhamento contínuo das demandas globais e oportunidades emergentes no mercado chinês.',
+                innov2_title: 'Inteligência de Negócios',
+                innov2_desc: 'Análise de dados e insights de mercado para embasar suas decisões de importação com segurança.',
+                innov3_title: 'Produtos de Alto Potencial',
+                innov3_desc: 'Seleção estratégica de produtos com maior probabilidade de sucesso no mercado brasileiro.',
+                cta_eyebrow: 'Vamos Importar Juntos?',
+                cta_title: 'Seu Sucesso Começa Aqui',
+                cta_desc: 'A Link Brasil está pronta para ser sua parceira estratégica no comércio com a China — com expertise, qualidade e dedicação do início ao fim.',
+                contact_email_label: 'E-mail',
+                contact_wa_label: 'Whatsapp/Telefone',
+                maps_link: 'Ver no Google Maps →',
+                btn_email: 'Enviar E-mail',
+                btn_instagram: 'Ver Instagram',
+                footer_rights: 'Todos os direitos reservados.',
+                footer_contact: 'Contato',
+            },
+            en: {
+                nav_about: 'About',
+                nav_pillars: 'Pillars',
+                nav_services: 'Services',
+                nav_stock: 'Stock',
+                nav_cta: 'Contact Us',
+                tagline: 'Connecting markets, moving industries! 🌎',
+                hero_br_cn: 'Brazil & China',
+                hero_eyebrow: 'Strategic Bridge',
+                hero_title: 'Your direct connection to<br>the <em>Chinese market</em>',
+                hero_desc: 'We connect Brazilian companies to the best manufacturers in China, with certified quality, security and business intelligence at every step.',
+                hero_services_btn: 'Our Services',
+                stat1: 'Certified Products',
+                stat2: 'Import Support',
+                stat3: 'Strategic Partnership',
+                about_badge_text: 'Global strategic bridge',
+                about_badge_b2b: 'Commercial partnership',
+                about_eyebrow: 'Connecting Opportunities',
+                about_title: 'More than an importer',
+                about_desc: 'Link Brasil operates at the heart of international trade, building real bridges between Brazil and China. We are strategic partners who deeply understand both markets and translate that into concrete results for your business.',
+                about_check1: '<strong>Deep knowledge</strong> of the Brazilian and Chinese markets',
+                about_check2: '<strong>International certifications</strong> and full traceability',
+                about_check3: '<strong>Full support</strong> at every step of the journey',
+                pillars_eyebrow: 'Our Pillars',
+                pillars_title: 'Quality that Transforms',
+                pillars_desc: 'Every detail of our process is designed to ensure the best results for your business.',
+                pillar1_title: 'High-Quality Products',
+                pillar1_desc: 'We rigorously select every supplier, ensuring excellence, durability and compliance with the standards required by the Brazilian market.',
+                pillar2_title: 'Strategic Partnerships in China',
+                pillar2_desc: 'Solid connections with renowned and reliable manufacturers, built over years of experience in the Chinese market.',
+                pillar3_title: 'Full Logistics',
+                pillar3_desc: 'We coordinate shipping, customs clearance and final delivery with full traceability at every step of the chain.',
+                pillar4_title: 'International Compliance',
+                pillar4_desc: 'Our legal and technical expertise protects your investment, reducing risks throughout the entire import chain.',
+                eco_eyebrow: 'Our Ecosystem',
+                eco_title: 'From factory to your business',
+                eco_desc: 'An integrated, frictionless process — from sourcing to final delivery in Brazil.',
+                eco1_title: 'Smart Sourcing',
+                eco1_desc: 'We identify the best manufacturers for your specific needs in the Chinese market.',
+                eco2_title: 'Centralized Management',
+                eco2_desc: 'We simplify communication and negotiation with multiple suppliers at a single point of contact.',
+                eco3_title: 'Full Logistics',
+                eco3_desc: 'We coordinate shipping, customs clearance and final delivery with full traceability.',
+                comp_eyebrow: 'International Compliance',
+                comp_title: 'Security at every step of the process',
+                comp_desc: 'We ensure all imported products meet the highest global standards.',
+                comp1: '<strong>International Certifications</strong> Products compliant with standards required by the Brazilian market and global regulations.',
+                comp2: '<strong>Legal & Technical Expertise</strong> Full protection of your investment with risk management throughout the entire import chain.',
+                comp3: '<strong>Full Traceability</strong> Complete visibility at every step of the process, from the factory to final delivery.',
+                stock_eyebrow: 'Ready to Ship',
+                stock_title: 'Ready-to-Ship Stock',
+                stock_desc: 'With market agility in mind, Link Brasil also offers ready-to-ship products in Brazil.',
+                stock_feat1: '<strong>Already nationalized items</strong> available in stock in Brazil, significantly reducing lead times.',
+                stock_feat2: 'Greater efficiency for <strong>restocking, urgent demands</strong> and immediate market opportunities.',
+                stock_feat3: 'Speed without compromising quality — <strong>strategic importing with local agility.</strong>',
+                stock_available: 'AVAILABLE NOW',
+                stock_available_desc: 'Products ready for immediate shipment, with no wait for production or international shipping.',
+                innov_eyebrow: 'Innovation',
+                innov_title: 'Eyes on the market!',
+                innov_desc: 'We continuously monitor industry demands to anticipate opportunities and offer products with high potential for success in Brazil.',
+                innov1_title: 'Trend Monitoring',
+                innov1_desc: 'Continuous tracking of global demands and emerging opportunities in the Chinese market.',
+                innov2_title: 'Business Intelligence',
+                innov2_desc: 'Data analysis and market insights to support your import decisions with confidence.',
+                innov3_title: 'High-Potential Products',
+                innov3_desc: 'Strategic selection of products most likely to succeed in the Brazilian market.',
+                cta_eyebrow: 'Let\'s Import Together?',
+                cta_title: 'Your Success Starts Here',
+                cta_desc: 'Link Brasil is ready to be your strategic partner in trade with China — with expertise, quality and dedication from start to finish.',
+                contact_email_label: 'E-mail',
+                contact_wa_label: 'WhatsApp / Phone',
+                maps_link: 'View on Google Maps →',
+                btn_email: 'Send E-mail',
+                btn_instagram: 'View Instagram',
+                footer_rights: 'All rights reserved.',
+                footer_contact: 'Contact',
+            }
+        };
+
+        let currentLang = 'pt';
+
+        function setLang(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+
+            document.getElementById('btnPT').classList.toggle('active', lang === 'pt');
+            document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) {
+                    el.innerHTML = t[key];
+                }
+            });
+        }
+    </script>
 
     <script>
         /* ── NAV SCROLL ── */
