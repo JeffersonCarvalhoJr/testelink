@@ -1849,30 +1849,68 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            max-width: 860px;
+            max-width: 960px;
             margin: 0 auto;
         }
+        /* calçadista spans 1 col but sits first — make it visually distinct */
         
         .prod-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 32px 24px;
+            padding: 28px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             text-align: center;
+            position: relative;
             transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
             cursor: default;
+            overflow: hidden;
         }
         
         .prod-card:hover {
             border-color: var(--teal);
             transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(29, 63, 75, 0.08);
+        }
+        /* Active / em operação */
+        
+        .prod-card-active {
+            border-color: var(--green);
+            border-width: 1.5px;
+        }
+        
+        .prod-card-active:hover {
+            border-color: var(--green);
+            box-shadow: 0 12px 32px rgba(101, 165, 69, 0.12);
+        }
+        
+        .prod-card-active .prod-icon {
+            background: rgba(101, 165, 69, 0.09);
+            border-color: rgba(101, 165, 69, 0.2);
+        }
+        
+        .prod-card-active .prod-icon svg {
+            color: var(--green);
+        }
+        
+        .prod-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(101, 165, 69, 0.1);
+            border: 1px solid rgba(101, 165, 69, 0.25);
+            border-radius: 20px;
+            padding: 3px 8px;
         }
         
         .prod-card-custom {
@@ -1889,6 +1927,7 @@
             height: 52px;
             border-radius: 10px;
             background: rgba(79, 117, 141, 0.08);
+            border: 1px solid rgba(79, 117, 141, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2354,38 +2393,87 @@
         </div>
     </section>
 
-    <!-- PRODUTOS / CATEGORIAS -->
+    <!-- SEGMENTOS -->
     <section class="products" id="servicos">
         <div class="products-header reveal">
-            <div class="section-eyebrow" data-i18n="prod_eyebrow">O que importamos</div>
-            <h2 class="section-title" data-i18n="prod_title">Categorias de Produtos</h2>
-            <p class="section-desc" data-i18n="prod_desc">Atuamos em diversas categorias industriais, sempre com foco em qualidade e custo competitivo.</p>
+            <div class="section-eyebrow" data-i18n="prod_eyebrow">Onde Atuamos</div>
+            <h2 class="section-title" data-i18n="prod_title">Segmentos que Atendemos</h2>
+            <p class="section-desc" data-i18n="prod_desc">Já operamos no setor calçadista e estamos estruturados para atender diversos outros segmentos industriais com a mesma qualidade e suporte.</p>
         </div>
         <div class="products-grid">
-            <div class="prod-card reveal">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
-                <div class="prod-name" data-i18n="prod1">Higiene, Saúde & Bem-Estar</div>
+
+            <!-- CALÇADISTA — em operação -->
+            <div class="prod-card prod-card-active reveal">
+                <div class="prod-badge" data-i18n="prod_badge_active">Em operação</div>
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 18c0 0 2-1 5-1s5 2 8 2 5-1 5-1V8c0 0-2 1-5 1S10 7 7 7 2 8 2 8v10z"/>
+                        <path d="M2 8c0 0 2-1 5-1s5 2 8 2 5-1 5-1"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod1">Calçadista</div>
             </div>
+
             <div class="prod-card reveal" style="transition-delay:0.05s">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                <div class="prod-name" data-i18n="prod2">Eletrônicos & Elétricos</div>
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6l9-3 9 3v6c0 5.25-3.75 9.75-9 11-5.25-1.25-9-5.75-9-11V6z"/>
+                        <path d="M3 6l9 3 9-3"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod2">Têxtil & Confecções</div>
             </div>
+
             <div class="prod-card reveal" style="transition-delay:0.1s">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-                <div class="prod-name" data-i18n="prod3">Ferramentas & Máquinas</div>
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod3">Beleza & Bem-Estar</div>
             </div>
+
             <div class="prod-card reveal" style="transition-delay:0.15s">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-                <div class="prod-name" data-i18n="prod4">Matérias-Primas</div>
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="1"/>
+                        <path d="M8 21h8M12 17v4"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod4">Eletrônicos & TI</div>
             </div>
+
             <div class="prod-card reveal" style="transition-delay:0.2s">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-                <div class="prod-name" data-i18n="prod5">EPI & Segurança</div>
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod5">Construção Civil</div>
             </div>
-            <div class="prod-card reveal prod-card-custom" style="transition-delay:0.25s">
-                <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                <div class="prod-name" data-i18n="prod6">Outros sob consulta</div>
+
+            <div class="prod-card reveal" style="transition-delay:0.25s">
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+                        <path d="M12 8v4l3 3"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod6">Agronegócio & Insumos</div>
             </div>
+
+            <div class="prod-card reveal prod-card-custom" style="transition-delay:0.3s">
+                <div class="prod-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <div class="prod-name" data-i18n="prod7">Outros sob consulta</div>
+            </div>
+
         </div>
     </section>
 
@@ -2816,15 +2904,17 @@
                 how3_desc: 'Gerenciamos toda a logística internacional e o desembaraço aduaneiro no Brasil.',
                 how4_title: 'Entregamos',
                 how4_desc: 'Produto em mãos, com qualidade certificada e suporte pós-entrega.',
-                prod_eyebrow: 'O que importamos',
-                prod_title: 'Categorias de Produtos',
-                prod_desc: 'Atuamos em diversas categorias industriais, sempre com foco em qualidade e custo competitivo.',
-                prod1: 'Higiene, Saúde & Bem-Estar',
-                prod2: 'Eletrônicos & Elétricos',
-                prod3: 'Ferramentas & Máquinas',
-                prod4: 'Matérias-Primas',
-                prod5: 'EPI & Segurança',
-                prod6: 'Outros sob consulta',
+                prod_eyebrow: 'Onde Atuamos',
+                prod_title: 'Segmentos que Atendemos',
+                prod_desc: 'Já operamos no setor calçadista e estamos estruturados para atender diversos outros segmentos industriais com a mesma qualidade e suporte.',
+                prod_badge_active: 'Em operação',
+                prod1: 'Calçadista',
+                prod2: 'Têxtil & Confecções',
+                prod3: 'Beleza & Bem-Estar',
+                prod4: 'Eletrônicos & TI',
+                prod5: 'Construção Civil',
+                prod6: 'Agronegócio & Insumos',
+                prod7: 'Outros sob consulta',
                 trust1_title: 'CNPJ Verificado',
                 trust1_sub: '65.176.545/0001-07',
                 trust2_title: 'Importação Legalizada',
@@ -2921,15 +3011,17 @@
                 how3_desc: 'We manage all international logistics and customs clearance in Brazil.',
                 how4_title: 'We deliver',
                 how4_desc: 'Product in hand, with certified quality and after-delivery support.',
-                prod_eyebrow: 'What we import',
-                prod_title: 'Product Categories',
-                prod_desc: 'We operate across various industrial categories, always focused on quality and competitive cost.',
-                prod1: 'Hygiene, Health & Wellness',
-                prod2: 'Electronics & Electrical',
-                prod3: 'Tools & Machinery',
-                prod4: 'Raw Materials',
-                prod5: 'PPE & Safety',
-                prod6: 'Others on request',
+                prod_eyebrow: 'Where We Operate',
+                prod_title: 'Segments We Serve',
+                prod_desc: 'We already operate in the footwear sector and are structured to serve many other industrial segments with the same quality and support.',
+                prod_badge_active: 'Active',
+                prod1: 'Footwear',
+                prod2: 'Textile & Apparel',
+                prod3: 'Beauty & Wellness',
+                prod4: 'Electronics & IT',
+                prod5: 'Construction',
+                prod6: 'Agribusiness & Inputs',
+                prod7: 'Others on request',
                 trust1_title: 'Verified Company',
                 trust1_sub: 'CNPJ 65.176.545/0001-07',
                 trust2_title: 'Legal Importer',
